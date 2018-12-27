@@ -38,11 +38,32 @@ class ColorPickerViewController: UIViewController {
     
     fileprivate var selection: Selection?
     
-    @IBOutlet weak var colorView: UIView!
+    @IBOutlet weak var colorView: UIView!{
+        didSet {
+            colorView.circleCorner = true
+            colorView.shadowOffset = CGSize(width: 1, height: 5)
+            colorView.shadowOpacity = 0.4
+            colorView.shadowShouldRasterize = true
+            colorView.shadowRadius = 14
+            colorView.shadowColor = UIColor.black
+        }
+    }
     
-    @IBOutlet weak var saturationSlider: GradientSlider!
-    @IBOutlet weak var brightnessSlider: GradientSlider!
-    @IBOutlet weak var hueSlider: GradientSlider!
+    @IBOutlet weak var saturationSlider: GradientSlider! {
+        didSet {
+            saturationSlider.thickness = 3
+        }
+    }
+    @IBOutlet weak var brightnessSlider: GradientSlider! {
+        didSet {
+            brightnessSlider.thickness = 3
+        }
+    }
+    @IBOutlet weak var hueSlider: GradientSlider! {
+        didSet {
+            hueSlider.thickness = 3
+        }
+    }
     
     @IBOutlet weak var mainStackView: UIStackView!
     
