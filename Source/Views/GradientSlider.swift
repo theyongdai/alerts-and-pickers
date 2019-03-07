@@ -10,17 +10,17 @@
 
 import UIKit
 
-@IBDesignable class GradientSlider: UIControl {
+ class GradientSlider: UIControl {
     
     static var defaultThickness:CGFloat = 2.0
     static var defaultThumbSize:CGFloat = 28.0
     
     //MARK: Properties
-    @IBInspectable var hasRainbow:Bool  = false {didSet{updateTrackColors()}}//Uses saturation & lightness from minColor
-    @IBInspectable var minColor:UIColor = UIColor.blue {didSet{updateTrackColors()}}
-    @IBInspectable var maxColor:UIColor = UIColor.orange {didSet{updateTrackColors()}}
+    var hasRainbow:Bool  = false {didSet{updateTrackColors()}}//Uses saturation & lightness from minColor
+    var minColor:UIColor = UIColor.blue {didSet{updateTrackColors()}}
+    var maxColor:UIColor = UIColor.orange {didSet{updateTrackColors()}}
     
-    @IBInspectable var value: CGFloat {
+    var value: CGFloat {
         get{ return _value }
         set{ set(value: newValue, animated:true) }
     }
@@ -30,10 +30,10 @@ import UIKit
         updateThumbPosition(animated: animated)
     }
     
-    @IBInspectable var minimumValue: CGFloat = 0.0 // default 0.0. the current value may change if outside new min value
-    @IBInspectable var maximumValue: CGFloat = 1.0 // default 1.0. the current value may change if outside new max value
+    var minimumValue: CGFloat = 0.0 // default 0.0. the current value may change if outside new min value
+    var maximumValue: CGFloat = 1.0 // default 1.0. the current value may change if outside new max value
     
-    @IBInspectable var minimumValueImage: UIImage? = nil { // default is nil. image that appears to left of control (e.g. speaker off)
+    var minimumValueImage: UIImage? = nil { // default is nil. image that appears to left of control (e.g. speaker off)
         didSet{
             if let img = minimumValueImage {
                 let imgLayer = _minTrackImageLayer ?? {
@@ -53,7 +53,7 @@ import UIKit
             self.layer.needsLayout()
         }
     }
-    @IBInspectable var maximumValueImage: UIImage? = nil { // default is nil. image that appears to right of control (e.g. speaker max)
+    var maximumValueImage: UIImage? = nil { // default is nil. image that appears to right of control (e.g. speaker max)
         didSet{
             if let img = maximumValueImage {
                 let imgLayer = _maxTrackImageLayer ?? {
@@ -78,7 +78,7 @@ import UIKit
     
     var actionBlock: (GradientSlider, CGFloat) -> () = { slider, newValue in  }
     
-    @IBInspectable var thickness: CGFloat = defaultThickness {
+    var thickness: CGFloat = defaultThickness {
         didSet{
             _trackLayer.cornerRadius = thickness / 2.0
             self.layer.setNeedsLayout()
@@ -114,7 +114,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var thumbIcon:UIImage? = nil {
+    var thumbIcon:UIImage? = nil {
         didSet{
             _thumbIconLayer.contents = thumbIcon?.cgImage
         }
