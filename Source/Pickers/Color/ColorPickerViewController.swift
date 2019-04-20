@@ -52,16 +52,23 @@ class ColorPickerViewController: UIViewController {
     @IBOutlet weak var saturationSlider: GradientSlider! {
         didSet {
             saturationSlider.thickness = 3
+            saturationSlider.minColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 1)
+            saturationSlider.maxColor = UIColor(hue: 1, saturation: 1, brightness: 1, alpha: 1)
         }
     }
     @IBOutlet weak var brightnessSlider: GradientSlider! {
         didSet {
             brightnessSlider.thickness = 3
+            brightnessSlider.minColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 1)
+            brightnessSlider.maxColor = UIColor(hue: 1, saturation: 1, brightness: 1, alpha: 1)
+            brightnessSlider.hasRainbow = false
         }
     }
     @IBOutlet weak var hueSlider: GradientSlider! {
         didSet {
             hueSlider.thickness = 3
+            hueSlider.minColor = UIColor(hue: 1, saturation: 1, brightness: 0, alpha: 1)
+            hueSlider.hasRainbow = true
         }
     }
     
