@@ -59,6 +59,15 @@ final class PickerViewViewController: UIViewController {
             pickerView.selectRow(initialSelection.row, inComponent: initialSelection.column, animated: true)
         }
     }
+    
+    func reloadWith(value values: Values, useSelection idx: Index) {
+        self.values = values
+        self.pickerView.reloadAllComponents()
+        DispatchQueue.main.async {
+            self.pickerView.selectRow(idx.row, inComponent: idx.column, animated: false)
+        }
+    }
+    
 }
 
 extension PickerViewViewController: UIPickerViewDataSource, UIPickerViewDelegate {
