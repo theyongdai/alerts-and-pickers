@@ -59,7 +59,7 @@ final class ItemWithPhoto: UICollectionViewCell {
     override public func layoutSubviews() {
         super.layoutSubviews()
         imageView.frame = contentView.frame
-        imageView.cornerRadius = 12
+        imageView.cornerRadiusSt = 12
         updateAppearance(forCircle: unselectedCircle)
         updateAppearance(forCircle: selectedCircle)
         updateAppearance(forPoint: selectedPoint)
