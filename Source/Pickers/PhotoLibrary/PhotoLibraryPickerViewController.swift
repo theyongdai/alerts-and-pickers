@@ -75,7 +75,8 @@ final class PhotoLibraryPickerViewController: UIViewController {
     var columns: CGFloat {
         switch layout.scrollDirection {
         case .vertical: return UIDevice.current.userInterfaceIdiom == .pad ? 3 : 2
-        case .horizontal: return 1
+//        case .horizontal: return 1
+        default: return 1
         }
     }
     
@@ -83,7 +84,9 @@ final class PhotoLibraryPickerViewController: UIViewController {
         switch layout.scrollDirection {
         case .vertical:
             return CGSize(width: view.bounds.width / columns, height: view.bounds.width / columns)
-        case .horizontal:
+//        case .horizontal:
+//            return CGSize(width: view.bounds.width, height: view.bounds.height / columns)
+        default:
             return CGSize(width: view.bounds.width, height: view.bounds.height / columns)
         }
     }
@@ -175,7 +178,8 @@ final class PhotoLibraryPickerViewController: UIViewController {
                 self.fetchPhotos(completionHandler: completionHandler)
             }
             
-        case .denied, .restricted:
+//        case .denied, .restricted:
+        default:
             /// User has denied the current app to access the contacts.
             let productName = Bundle.main.infoDictionary!["CFBundleName"]!
             let alert = UIAlertController(title: "Permission denied", message: "\(productName) does not have access to contacts. Please, allow the application to access to your photo library.", preferredStyle: .alert)

@@ -164,7 +164,8 @@ final class ContactsPickerViewController: UIViewController {
                 self.fetchContacts(completionHandler: completionHandler)
             }
 
-        case .denied, .restricted:
+//        case .denied, .restricted:
+        default:
             /// User has denied the current app to access the contacts.
             let productName = Bundle.main.infoDictionary!["CFBundleName"]!
             let alert = UIAlertController(title: "Permission denied", message: "\(productName) does not have access to contacts. Please, allow the application to access to your contacts.", preferredStyle: .alert) 
@@ -298,7 +299,7 @@ extension ContactsPickerViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         if searchController.isActive { return 0 }
         tableView.scrollToRow(at: IndexPath(row: 0, section: index), at: .top , animated: false)
-        return sortedContactKeys.index(of: title)!
+        return sortedContactKeys.firstIndex(of: title)!
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
